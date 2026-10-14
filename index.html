@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AI谈判助手 - 常见谈判场景话术免费查</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:#f7f3ec;color:#333;line-height:1.8;padding:0 0 70px;max-width:760px;margin:0 auto;font-size:17px}
+.kuan{font-size:26px;font-weight:bold;color:#fff;background:linear-gradient(135deg,#d32f2f,#e65100);padding:18px 16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.kuan .sub{display:block;font-size:15px;font-weight:normal;opacity:.95;margin-top:6px;line-height:1.6}
+.disclaimer{font-size:12px;color:#999;text-align:center;padding:10px 20px;line-height:1.7}
+.keytip{background:#fff3e0;border:2px solid #e65100;border-radius:10px;padding:14px 16px;color:#b71c1c;font-size:17px;font-weight:bold;margin:12px 16px;line-height:1.7}
+.searchwrap{margin:12px 16px}
+.searchwrap input{width:100%;font-size:18px;padding:15px 16px;border:2px solid #e65100;border-radius:12px;background:#fff;outline:none}
+.searchwrap input:focus{box-shadow:0 0 0 3px rgba(230,81,0,.15)}
+.aiask{margin:12px 16px;background:#fff;border:1px solid #f0e6d6;border-radius:14px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.aiask textarea{width:100%;font-size:17px;padding:12px;border:1px solid #ddd;border-radius:10px;min-height:76px;font-family:inherit;line-height:1.6;resize:vertical}
+.aiask button{width:100%;margin-top:10px;font-size:19px;font-weight:bold;color:#fff;background:linear-gradient(135deg,#d32f2f,#e65100);border:none;border-radius:12px;padding:14px;cursor:pointer}
+.aiask button:active{opacity:.85}
+#airesult{margin-top:12px;display:none}
+h2{background:#fff;margin:18px 12px 0;padding:12px 16px;font-size:20px;color:#b71c1c;border-left:6px solid #e65100;border-radius:0 8px 8px 0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 16px}
+.scard{background:#fff;border:1px solid #f0e6d6;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.06);overflow:hidden}
+.scard .head{padding:16px 10px;text-align:center;cursor:pointer}
+.scard .icon{font-size:36px;line-height:1.2}
+.scard .name{font-size:18px;font-weight:bold;margin-top:6px;color:#333}
+.scard .pain{font-size:13px;color:#888;margin-top:4px;line-height:1.5;padding:0 4px}
+.scard.open{border:2px solid #e65100}
+.scard .detail{display:none;padding:4px 16px 18px;text-align:left}
+.scard.open .detail{display:block}
+.detail h4{font-size:17px;color:#b71c1c;margin:14px 0 8px;border-bottom:1px dashed #f0e6d6;padding-bottom:6px}
+.detail ol{margin:0 0 0 22px}
+.detail ol li{margin-bottom:10px;font-size:16px}
+.detail ol li b{color:#b71c1c}
+.detail ul{margin:0 0 0 20px}
+.detail ul li{margin-bottom:6px;font-size:16px}
+.detail .law{font-size:13px;color:#999;background:#fafafa;border-radius:8px;padding:10px 12px;margin-top:10px;line-height:1.7}
+.detail .talkscript{background:#fff8f0;border-left:4px solid #e65100;border-radius:0 8px 8px 0;padding:10px 12px;margin:8px 0;font-size:16px;color:#5d4037}
+.matchtag{display:inline-block;background:#e65100;color:#fff;font-size:13px;border-radius:20px;padding:2px 12px;margin-bottom:8px}
+.contact{margin:24px 16px 0;background:#fff;border:2px solid #e65100;border-radius:14px;padding:18px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.contact .t{font-size:20px;font-weight:bold;color:#b71c1c;margin-bottom:10px}
+.contact .wx{font-size:22px;font-weight:bold;color:#333;margin:8px 0}
+.contact .qq{font-size:20px;font-weight:bold;color:#333;margin:8px 0}
+.contact .tip{font-size:15px;color:#888;margin-top:10px}
+.footer{font-size:12px;color:#aaa;text-align:center;padding:20px;line-height:1.8}
+.nomatch{padding:20px;text-align:center;color:#888;font-size:16px}
+</style>
+</head>
+<body>
+
+<div class="kuan">🎯 AI谈判助手<span class="sub">10大常见场景 · 话术免费查<br>输入问题，AI帮你匹配谈判策略</span></div>
+
+<p class="disclaimer">⚠️ 本工具提供谈判思路参考，不构成法律意见，重大事项请咨询持证律师。</p>
+
+<div class="keytip">👇 下方10个场景卡片，点开看3-5步具体话术<br>都是谈判专家实战经验，一步一步照着做</div>
+
+<h2>🔍 搜场景</h2>
+<div class="searchwrap">
+<input id="searchInput" type="text" placeholder="输入关键词，如：工资、买车、房租…">
+</div>
+
+<h2>🤖 智能问答</h2>
+<div class="aiask">
+<textarea id="qInput" placeholder="描述你的情况，比如：老板欠我两个月工资不给怎么办？"></textarea>
+<button onclick="askAI()">获取谈判建议</button>
+<div id="airesult"></div>
+</div>
+
+<h2>📋 10大谈判场景</h2>
+<div class="cards" id="cards"></div>
+<div class="nomatch" id="nomatch" style="display:none">没找到相关场景，换个关键词试试，比如：工资、买车、房租、借钱…</div>
+
+<div class="contact">
+<div class="t">📞 需要一对一谈判指导？</div>
+<div class="wx">微信：LcgXqAi</div>
+<div class="qq">QQ：1270161546</div>
+<div class="tip">需要一对一谈判指导，加微信详聊<br>复杂情况，专家帮你定制谈判方案</div>
+</div>
+
+<p class="footer">AI谈判助手 · 谈判思路参考工具<br>本页面内容不构成法律意见，重大事项请咨询持证律师</p>
+
+<script>
+var SCEN=[
+{
+id:"taoxin",icon:"💰",name:"讨薪",
+pain:"老板拖欠工资，干着急没办法",
+keywords:["工资","欠薪","拖欠","老板不给钱","薪水","加班费","年终奖","离职工资"],
+steps:[
+"<b>第一步：先把证据攒齐。</b>劳动合同、考勤记录、工资条、工资到账流水、工作群聊天记录，全部截图存好。没签合同也别慌，考勤和流水就能证明劳动关系。",
+"<b>第二步：书面催要，留记录。</b>微信或短信发正式文字：'X总，我X月X日至X月X日的工资共X元，请于X月X日前支付。'别只打电话，电话说完对方不认。",
+"<b>第三步：谈判话术。</b>'王总，我也不想把事闹大，劳动监察大队的材料我都准备好了。您这周把工资结了，咱们好聚好散；实在困难，写个分期还款计划也行，但第一期这周得到位。'",
+"<b>第四步：找劳动监察大队投诉。</b>带上证据去当地劳动保障监察部门，免费，不用请律师，一般1-2周就有回音。这是成本最低、最管用的一招。",
+"<b>第五步：劳动仲裁。</b>监察不管用就申请仲裁，仲裁本身免费。赢了老板还不给，拿着裁决书去法院申请强制执行。"
+],
+notes:["千万别签'自愿放弃工资'之类的任何文件","别被'再干一个月一起结'拖住，越拖越难要","仲裁时效只有1年，别拖过了","要钱过程中别动手、别堵门，违法"],
+law:"《劳动合同法》第30条：用人单位应按时足额支付劳动报酬；第85条：逾期不支付，劳动部门可责令加付50%-100%赔偿金。仅供参考，不构成法律意见。"
+},
+{
+id:"maiche",icon:"🚗",name:"买车砍价",
+pain:"4S店套路多，怕花冤枉钱",
+keywords:["买车","砍价","4s店","裸车价","提车","贷款买车","保险","购置税"],
+steps:[
+"<b>第一步：功课做足再进店。</b>汽车之家、懂车帝查裸车指导价，再打电话问同城3家4S店报价，心里先有底价，进店才不被牵着走。",
+"<b>第二步：一项一项分开谈。</b>裸车价、保险、精品、手续费、上牌费分开谈，不让销售打包报价。打包价里水分最大。",
+"<b>第三步：杀手锏话术。</b>'X店给我裸车X万，比你这便宜8000，你要能做到我现在就交定金，做不到我就去那边了。'（提前真去询一家价，底气才足）",
+"<b>第四步：赠品折现。</b>'脚垫贴膜这些我不要，折成现金优惠，实在点。'赠品看着多，成本没多少，折现最划算。",
+"<b>第五步：挑时机+落字据。</b>月底、季度末去谈，销售冲任务最好说话。交钱前把所有口头承诺（送几次保养、什么精品）写进合同备注，销售口头说的都不算。"
+],
+notes:["'定金'和'订金'一字之差：定金不退，订金可退，签合同看清","贷款手续费、'金融服务费'能砍就砍，很多是乱收费","别被'这车就剩一台了'催单，八成是套路"],
+law:"《消费者权益保护法》第8条：消费者有知情权；第10条：公平交易权。仅供参考，不构成法律意见。"
+},
+{
+id:"fangzu",icon:"🏠",name:"房租涨价谈判",
+pain:"房东要涨租，搬家成本太高",
+keywords:["房租","涨租","房东","续租","租房","押金","搬家"],
+steps:[
+"<b>第一步：查行情，拿数据说话。</b>贝壳、链家查同小区同户型现在租多少。如果房东涨完高出市场价，这就是你的筹码。",
+"<b>第二步：打感情+算利益账。</b>'张姐，我租了两年，从没拖欠过房租，房子也爱惜。您涨10%我就得搬，空一个月您损失更大，还得重新找租客、打扫，得不偿失。'",
+"<b>第三步：给台阶，提方案。</b>主动提出：'签两年长约，涨幅控制在5%以内'，或者'我一次付半年，价格就别涨了'。让房东觉得他也占了便宜。",
+"<b>第四步：书面确认。</b>谈好的价格微信文字确认一遍，续签合同时写进去。口头答应的涨幅，转头不认你没办法。"
+],
+notes:["合同到期前1-2个月就谈，别等到最后被动","押金退还条件提前说清，写进合同","别一上来就威胁搬家，先谈，谈崩再说"],
+law:"《民法典》第703-734条：租赁合同相关规定；租金标准由双方协商确定。仅供参考，不构成法律意见。"
+},
+{
+id:"jieqian",icon:"🤝",name:"借钱不还",
+pain:"熟人借钱不还，撕破脸难",
+keywords:["借钱","欠钱不还","朋友借钱","借条","讨债","要账","欠款"],
+steps:[
+"<b>第一步：先礼后兵，文字留痕。</b>微信正式留言：'X哥，当初借的X万元说好X月还，现在过去X个月了，我这边也周转不开了，你看这周先还一部分行不？'文字就是证据。",
+"<b>第二步：给台阶，定计划。</b>'我知道你难，一次还不清就分三期，每期X元，咱们写个字据，对你我都好。'有还款计划，白纸黑字，他赖不掉。",
+"<b>第三步：找中间人敲边鼓。</b>别公开闹，让共同朋友侧面传话：'他最近是不是手头紧？再不还人家要走法律程序了。'",
+"<b>第四步：最后通牒。</b>'月底前再不还，我就去法院起诉了，诉讼费你出，还影响征信。'说完真去做——小额欠款法院有简易程序，成本不高。"
+],
+notes:["借条、转账记录、聊天记录缺一不可，赶紧补齐","诉讼时效3年，别拖过了","别上门闹事、别发侮辱信息，小心自己违法","对方实在没钱，法院判了也执行难，先摸清对方家底"],
+law:"《民法典》第667-680条：借款合同相关规定；诉讼时效3年。仅供参考，不构成法律意见。"
+},
+{
+id:"weiquan",icon:"🛒",name:"消费维权",
+pain:"买到问题商品，商家不给退",
+keywords:["退货","退款","维权","假货","质量问题","客服不处理","差评","12315","七天无理由"],
+steps:[
+"<b>第一步：证据先留好。</b>商品问题拍照录像、聊天记录、订单截图、下单凭证全部保存。维权拼的就是证据。",
+"<b>第二步：跟客服硬气谈。</b>'按消法第24条，商品有质量问题7天包退。你不处理，我就投诉到12315，平台也会扣你分。'态度硬、话简短，别跟客服扯皮。",
+"<b>第三步：平台官方介入。</b>淘宝、京东、拼多多都有官方客服介入通道，上传证据申请，一般偏向消费者。话术：'我不想给你差评，也不想投诉，你痛快退款，咱们都省事。'",
+"<b>第四步：12315投诉。</b>微信搜'12315'小程序，10分钟填完，商家最怕这个。投诉后一般几天内市场监管部门就会联系商家。",
+"<b>第五步：终极话术。</b>'你要拖，我现在就12315+平台双投诉，再打12345。退款是小事，店铺扣分是大事，你掂量。'"
+],
+notes:["7天无理由只适用于完好商品，质量问题才是硬通货","别先确认收货再维权，确认收货后被动","大额商品（家电、手机）优先走官方售后+12315"],
+law:"《消费者权益保护法》第24条：质量问题7日内退货；第52条：经营者责任。《网络购买商品七日无理由退货暂行办法》。仅供参考，不构成法律意见。"
+},
+{
+id:"gongshang",icon:"🏥",name:"工伤赔偿",
+pain:"工作中受伤，老板不认账",
+keywords:["工伤","受伤","赔偿","认定","鉴定","老板不认","医药费","伤残"],
+steps:[
+"<b>第一步：第一时间就医+留单。</b>去医院，病历上写清楚'工作中受伤'，所有检查单、医药费单据、用药清单一张别丢。",
+"<b>第二步：证明劳动关系。</b>劳动合同、考勤记录、工资流水、工友证言、工作服工牌照片都行。没签合同也别慌，这些能补上。",
+"<b>第三步：申请工伤认定。</b>事故发生1年内向人社局申请。单位30天内不报，你自己也能报，别等老板。",
+"<b>第四步：做劳动能力鉴定。</b>伤情稳定后申请鉴定，等级直接决定赔多少钱，这是核心环节。",
+"<b>第五步：谈判话术。</b>'老板，工伤认定我已经申请了，鉴定下来大概X级，按标准赔X万。走程序你也得赔，还搭时间搭精力。咱们按标准私了，你一次性付清，我写收条，这事了了。'"
+],
+notes:["工伤认定申请时效1年，千万别错过","私了金额别低于法定标准，先算清楚再谈","拿到钱再签字，先签字后拿钱风险大","老板威胁开除？录音留证，这是违法的"],
+law:"《工伤保险条例》第14条（认定情形）、第17条（申请时限）、第21条（劳动能力鉴定）。仅供参考，不构成法律意见。"
+},
+{
+id:"lihun",icon:"💔",name:"离婚财产分割",
+pain:"离婚分财产，怕自己吃亏",
+keywords:["离婚","财产分割","房产","存款","抚养权","共同财产","转移财产","协议离婚"],
+steps:[
+"<b>第一步：先摸清家底。</b>房产、存款、股票、公积金、保险、贵重物品，拍照留存。特别注意对方有没有偷偷转移财产，发现立刻取证。",
+"<b>第二步：分清共同财产。</b>婚后买的房、婚后还的贷、婚后存的钱，基本都是共同财产，一人一半是起点。婚前个人财产归个人。",
+"<b>第三步：谈判策略。</b>'房子归你，你按市场价补我差价；或者房子归我，我补你。找评估公司估个价，谁也不吃亏。真闹上法庭，律师费加时间，两个人都不划算。'",
+"<b>第四步：孩子和财产分开谈。</b>抚养权归谁、抚养费多少，和财产分割分开谈，别拿孩子当筹码，反而让自己被动。",
+"<b>第五步：协议写死。</b>离婚协议每个条款写清楚：房子归谁、过户时间、补偿款金额和付款时间、违约责任。签完必须去民政局备案才有效。"
+],
+notes:["别在气头上签'净身出户'，签了很难反悔","发现对方转移财产，立刻拍照取证并咨询律师","协议离婚必须双方到民政局办理，私下写的无效力","涉及大额财产或对方不配合，直接请律师"],
+law:"《民法典》第1062条（夫妻共同财产）、第1087条（离婚财产分割）。仅供参考，不构成法律意见。"
+},
+{
+id:"shangwu",icon:"💼",name:"商务合作谈判",
+pain:"谈合作怕被压价、怕被坑",
+keywords:["合作","谈判","压价","合同","商务","代理","供货","账期","报价"],
+steps:[
+"<b>第一步：摸清对方底牌。</b>对方为什么找你、备选有几家、决策人是谁、项目急不急。信息越多，你越主动。",
+"<b>第二步：报价留让步空间。</b>首次报价留15-20%空间，对方砍价有成就感，你保住底线。一上来就报底价，后面没得谈。",
+"<b>第三步：捆绑谈判。</b>价格、账期、数量、售后打包谈：'价格可以让5个点，但账期得从月结改现结'——这头让了，那头找回来。",
+"<b>第四步：制造紧迫感。</b>'这个价格这周有效，下周原材料涨价我就保不住了。'给对方一个现在拍板的理由。",
+"<b>第五步：落字为据。</b>口头谈好的，当天发微信或邮件文字确认：'跟您确认下今天谈的三点……'白纸黑字，避免日后扯皮。"
+],
+notes:["别在饭桌酒桌上拍板，大事回公司商量后再定","合同违约条款要双向对等，别只约束自己","首付款比例守住，尾款别拖太久","对方口头承诺的返点、支持，全部写进合同"],
+law:"《民法典》合同编相关规定。仅供参考，不构成法律意见。"
+},
+{
+id:"zhongcai",icon:"⚖️",name:"劳动仲裁",
+pain:"被开除、被欠薪，仲裁不会搞",
+keywords:["仲裁","开除","辞退","经济补偿","年假","加班","试用期","解除合同"],
+steps:[
+"<b>第一步：打包证据。</b>劳动合同、工资流水、考勤记录、辞退通知、聊天记录，缺啥补啥。证据是仲裁的一切。",
+"<b>第二步：算清诉求。</b>欠薪X元+经济补偿（工作年限N个月工资）+未休年假工资+加班费，一项一项列清楚，金额算准。",
+"<b>第三步：先调解，能拿就拿。</b>仲裁委立案前一般会组织调解，能拿到合理金额就拿，别赌气。调解书和裁决书一样有强制力。",
+"<b>第四步：开庭只讲事实。</b>不骂人、不诉苦，一条一条过证据：'仲裁员，我提交的证据X证明……'冷静、简短、有条理最有说服力。",
+"<b>第五步：赢了要执行。</b>对方不给钱，2年内拿着裁决书去法院申请强制执行，查封、扣工资都行。"
+],
+notes:["仲裁时效1年，从知道权益被侵害算起","经济补偿N=工作年限，满1年算1个月工资","'协商解除'和'自愿离职'性质完全不同，别被忽悠签字","公司让你签'自动离职'才能拿工资？录音留证，这是违法的"],
+law:"《劳动争议调解仲裁法》；《劳动合同法》第46、47条：经济补偿标准。仅供参考，不构成法律意见。"
+},
+{
+id:"wuye",icon:"🏢",name:"物业纠纷",
+pain:"物业不作为，物业费照收",
+keywords:["物业","物业费","电梯","漏水","垃圾","业委会","12345","不作为"],
+steps:[
+"<b>第一步：取证。</b>电梯坏X天没人修、垃圾成山、漏水不处理、消防通道堵塞，拍照录像，带上日期。证据攒够再出手。",
+"<b>第二步：书面投诉。</b>给物业发正式文字：'X月X日反映的X问题至今未解决，请X日前处理完毕。'微信文字也算书面，别只打电话。",
+"<b>第三步：打12345/找住建局。</b>比跟物业吵架管用100倍。12345工单会转到街道和住建部门督办，物业最怕这个。",
+"<b>第四步：拒交物业费要讲究方法。</b>不能一句话就不交，要书面说明'因服务不达标暂缓缴纳，待整改后补交'，否则被起诉很被动。",
+"<b>第五步：釜底抽薪。</b>联合邻居成立业委会，炒掉不作为的物业，重新招标。这是根治的办法，一个人闹没用。"
+],
+notes:["以拒交物业费施压风险大，被起诉基本要补交","先走投诉主管部门，再考虑法律手段","保留每次投诉的工单号和回复","业委会成立需要专有部分占50%以上业主同意"],
+law:"《民法典》第937-948条：物业服务合同；《物业管理条例》。仅供参考，不构成法律意见。"
+}
+];
+
+function esc(s){return s;}
+function renderCards(filter){
+  var box=document.getElementById('cards');
+  var q=(filter||'').trim().toLowerCase();
+  box.innerHTML='';
+  var shown=0;
+  SCEN.forEach(function(s,idx){
+    var hay=(s.name+' '+s.pain+' '+s.keywords.join(' ')).toLowerCase();
+    if(q && hay.indexOf(q)<0) return;
+    shown++;
+    var d=document.createElement('div');
+    d.className='scard';d.id='card-'+s.id;
+    var stepsHtml=s.steps.map(function(t){return '<li>'+t+'</li>';}).join('');
+    var notesHtml=s.notes.map(function(t){return '<li>'+t+'</li>';}).join('');
+    d.innerHTML='<div class="head" onclick="toggleCard(\''+s.id+'\')">'
+      +'<div class="icon">'+s.icon+'</div>'
+      +'<div class="name">'+s.name+'</div>'
+      +'<div class="pain">'+s.pain+'</div></div>'
+      +'<div class="detail">'
+      +'<h4>📝 3-5步实战话术</h4><ol>'+stepsHtml+'</ol>'
+      +'<h4>⚠️ 注意事项</h4><ul>'+notesHtml+'</ul>'
+      +'<h4>📖 相关法律依据</h4><div class="law">'+s.law+'</div>'
+      +'</div>';
+    box.appendChild(d);
+  });
+  document.getElementById('nomatch').style.display=shown?'none':'block';
+}
+function toggleCard(id){
+  var el=document.getElementById('card-'+id);
+  el.classList.toggle('open');
+  if(el.classList.contains('open')){
+    setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'start'});},100);
+  }
+}
+function scoreScenario(s,q){
+  q=q.toLowerCase();var score=0;
+  if(q.indexOf(s.name)>=0) score+=20;
+  s.keywords.forEach(function(kw){
+    if(q.indexOf(kw.toLowerCase())>=0) score+=10;
+  });
+  var painWords=s.pain.toLowerCase();
+  for(var i=0;i<q.length-1;i++){
+    var bigram=q.substr(i,2);
+    if(bigram.trim().length<2) continue;
+    if(painWords.indexOf(bigram)>=0) score+=1;
+  }
+  return score;
+}
+function askAI(){
+  var q=document.getElementById('qInput').value.trim();
+  var res=document.getElementById('airesult');
+  res.style.display='block';
+  if(!q){
+    res.innerHTML='<div class="keytip" style="margin:0">请先在上面输入你的情况，比如：老板欠我工资不给怎么办？</div>';
+    return;
+  }
+  var best=null,bestScore=0,second=null,secondScore=0;
+  SCEN.forEach(function(s){
+    var sc=scoreScenario(s,q);
+    if(sc>bestScore){second=best;secondScore=bestScore;best=s;bestScore=sc;}
+    else if(sc>secondScore){second=s;secondScore=sc;}
+  });
+  if(!best||bestScore<5){
+    res.innerHTML='<div class="keytip" style="margin:0">🤔 没找到太相关的场景<br><span style="font-weight:normal">换个说法试试，比如：工资、买车、房租、借钱、退货、工伤、离婚、物业…<br>或者直接加微信 <b>LcgXqAi</b>，一对一帮你分析。</span></div>';
+    return;
+  }
+  var stepsHtml=best.steps.map(function(t){return '<li>'+t+'</li>';}).join('');
+  var html='<div><span class="matchtag">AI匹配：'+best.icon+' '+best.name+'</span>'
+    +'<h4 style="font-size:17px;color:#b71c1c;margin:6px 0">📝 给你的谈判建议</h4><ol style="margin-left:22px;font-size:16px">'
+    +stepsHtml+'</ol>'
+    +'<h4 style="font-size:17px;color:#b71c1c;margin:12px 0 6px">⚠️ 注意事项</h4><ul style="margin-left:20px;font-size:16px">'
+    +best.notes.map(function(t){return '<li style="margin-bottom:6px">'+t+'</li>';}).join('')+'</ul>'
+    +'<div class="law" style="font-size:13px;color:#999;background:#fafafa;border-radius:8px;padding:10px 12px;margin-top:10px">'+best.law+'</div>';
+  if(second&&secondScore>=5){
+    html+='<div style="margin-top:10px;font-size:15px;color:#888">💡 可能还相关：<a href="javascript:void(0)" onclick="jumpTo(\''+second.id+'\')" style="color:#e65100;font-weight:bold">'+second.icon+' '+second.name+'</a></div>';
+  }
+  html+='<div style="margin-top:10px;font-size:15px;color:#888">💬 情况复杂？加微信 <b style="color:#b71c1c">LcgXqAi</b> 一对一指导</div></div>';
+  res.innerHTML=html;
+  res.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function jumpTo(id){
+  renderCards('');
+  document.getElementById('searchInput').value='';
+  var el=document.getElementById('card-'+id);
+  if(el){el.classList.add('open');el.scrollIntoView({behavior:'smooth',block:'start'});}
+}
+document.getElementById('searchInput').addEventListener('input',function(){
+  renderCards(this.value);
+});
+renderCards('');
+</script>
+</body>
+</html>
