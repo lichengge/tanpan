@@ -71,6 +71,19 @@ h2{background:#fff;margin:18px 12px 0;padding:12px 16px;font-size:20px;color:#b7
 <div class="cards" id="cards"></div>
 <div class="nomatch" id="nomatch" style="display:none">没找到相关场景，换个关键词试试，比如：工资、买车、房租、借钱…</div>
 
+<h2>💬 用户反馈</h2>
+<div class="aiask">
+<div style="font-size:16px;margin-bottom:10px">用得咋样？给我们提个意见：</div>
+<div style="margin-bottom:10px">
+<button type="button" onclick="setFb('好用，话术很实用')" id="fb1" style="width:auto;padding:10px 18px;margin:0 6px 6px 0;font-size:16px">👍 好用</button>
+<button type="button" onclick="setFb('一般，话术不够具体')" id="fb2" style="width:auto;padding:10px 18px;margin:0 6px 6px 0;font-size:16px">😐 一般</button>
+<button type="button" onclick="setFb('不好用，') " id="fb3" style="width:auto;padding:10px 18px;margin:0 6px 6px 0;font-size:16px">👎 不好用</button>
+</div>
+<textarea id="fbInput" placeholder="说说你的使用感受，或想加啥新场景…"></textarea>
+<button onclick="sendFb()">提交反馈</button>
+<div id="fbresult"></div>
+</div>
+
 <div class="contact">
 <div class="t">📞 需要一对一谈判指导？</div>
 <div class="wx">微信：LcgXqAi</div>
@@ -312,6 +325,23 @@ document.getElementById('searchInput').addEventListener('input',function(){
   renderCards(this.value);
 });
 renderCards('');
+function setFb(t){
+  document.getElementById('fbInput').value=t;
+}
+function sendFb(){
+  var v=document.getElementById('fbInput').value.trim();
+  var box=document.getElementById('fbresult');
+  if(!v){box.innerHTML='<div style="color:#b71c1c;font-size:15px;margin-top:8px">先写点内容再提交哦~</div>';return;}
+  var msg='【AI谈判助手反馈】'+v;
+  box.innerHTML='<div class="keytip" style="margin:10px 0 0;font-size:15px">✅ 收到！请复制下面内容发到微信 <b>LcgXqAi</b>：<br><br><span style="font-weight:normal;background:#fff;display:block;padding:10px;border-radius:8px;margin-top:8px;user-select:all">'+msg.replace(/</g,'&lt;')+'</span><br><button onclick="copyFb()" style="width:auto;padding:10px 24px;font-size:16px;margin:0">📋 一键复制</button></div>';
+  box.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function copyFb(){
+  var v=document.getElementById('fbInput').value.trim();
+  var t='【AI谈判助手反馈】'+v;
+  if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){alert('已复制，去微信粘贴发给 LcgXqAi 吧！');});}
+  else{alert('请长按上方文字手动复制');}
+}
 </script>
 </body>
 </html>
